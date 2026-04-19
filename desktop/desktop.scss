@@ -5,12 +5,23 @@
 }
 
 .sidebar-wrapper {
-  background:
-    linear-gradient(to top, transparent 225px, transparent, var(--secondary) 320px),
-    var(--sidebar-image, none);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: bottom;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 var(--sidebar-image-footer-offset, 3em) 0;
+    background:
+      linear-gradient(to top, transparent 225px, transparent, var(--secondary) 320px),
+      var(--sidebar-image, none);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: bottom;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
 }
 
 .sidebar-sections {
