@@ -25,10 +25,14 @@ function pickUrl(settings) {
 
 export default apiInitializer((api) => {
   const url = pickUrl(settings);
-  if (url) {
-    document.documentElement.style.setProperty(
-      "--sidebar-image",
-      `url("${url}")`
-    );
-  }
+  const root = document.documentElement;
+
+  api.onPageChange((path) => {
+    const inAdmin = path.startsWith("/admin");
+    if (url && !inAdmin) {
+      root.style.setProperty("--sidebar-image", `url("${url}")`);
+    } else {
+      root.style.removeProperty("--sidebar-image");
+    }
+  });
 });
