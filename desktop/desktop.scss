@@ -1,10 +1,27 @@
-.sidebar-sections {
+@property --sidebar-image-mask-stop {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+.sidebar-wrapper {
   background:
     linear-gradient(to top, transparent 225px, transparent, var(--secondary) 320px),
     var(--sidebar-image, none);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: bottom;
+}
+
+.sidebar-sections {
+  --sidebar-image-mask-stop: 50%;
+  mask-image: linear-gradient(to bottom, black var(--sidebar-image-mask-stop), transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black var(--sidebar-image-mask-stop), transparent 95%);
+  transition: --sidebar-image-mask-stop 0.4s ease;
+}
+
+.sidebar-wrapper:hover .sidebar-sections {
+  --sidebar-image-mask-stop: 100%;
 }
 
 %sidebar-text-outline {
