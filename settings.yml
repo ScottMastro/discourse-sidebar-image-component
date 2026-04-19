@@ -1,0 +1,17 @@
+override_image_url:
+  default: ""
+  description: "Full URL to an image that should always be shown. If set, the image pool below is ignored."
+
+image_urls:
+  default: ""
+  type: list
+  list_type: simple
+  description: "Pipe-separated list of image URLs. One is chosen according to the rotation mode below."
+
+rotation_mode:
+  default: "daily"
+  type: enum
+  choices:
+    - daily
+    - random
+  description: "How to pick an image from the pool. 'daily' rotates deterministically once per day; 'random' picks a new one on every page load."

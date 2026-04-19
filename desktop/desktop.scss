@@ -1,0 +1,22 @@
+.sidebar-sections {
+  background:
+    linear-gradient(to top, transparent 225px, transparent, var(--secondary) 320px),
+    var(--sidebar-image, none);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom;
+}
+
+%sidebar-text-outline {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 3px var(--secondary);
+  padding: 2px;
+}
+
+.sidebar-section-link-content-text { @extend %sidebar-text-outline; }
+.sidebar-section-header-text       { @extend %sidebar-text-outline; }
+
+.sidebar-section-link-prefix {
+  background: var(--secondary);
+  border-radius: 15%;
+}
