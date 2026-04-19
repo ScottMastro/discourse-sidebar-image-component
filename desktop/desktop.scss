@@ -1,7 +1,7 @@
 @property --sidebar-image-mask-stop {
   syntax: "<percentage>";
   inherits: false;
-  initial-value: 50%;
+  initial-value: 45%;
 }
 
 .sidebar-wrapper {
@@ -11,13 +11,33 @@
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: left calc(100% - var(--sidebar-image-footer-offset, 3em));
+  transition: background-color 0.5s ease;
+}
+
+.sidebar-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-color: rgba(var(--secondary-rgb), 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  transition: background-color 0.5s ease, backdrop-filter 0.5s ease,
+    -webkit-backdrop-filter 0.5s ease;
+}
+
+.sidebar-wrapper:hover::before {
+  background-color: rgba(var(--secondary-rgb), 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .sidebar-sections {
-  --sidebar-image-mask-stop: 50%;
+  --sidebar-image-mask-stop: 45%;
   mask-image: linear-gradient(to bottom, black var(--sidebar-image-mask-stop), transparent 95%);
   -webkit-mask-image: linear-gradient(to bottom, black var(--sidebar-image-mask-stop), transparent 95%);
-  transition: --sidebar-image-mask-stop 0.4s ease;
+  transition: --sidebar-image-mask-stop 0.6s ease-out;
 }
 
 .sidebar-wrapper:hover .sidebar-sections {
