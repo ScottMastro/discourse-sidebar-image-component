@@ -29,6 +29,7 @@ export default apiInitializer((api) => {
 
   api.onPageChange((path) => {
     const inAdmin = path.startsWith("/admin");
+    document.body.classList.toggle("sidebar-image-active", !inAdmin);
     if (url && !inAdmin) {
       root.style.setProperty("--sidebar-image", `url("${url}")`);
     } else {
